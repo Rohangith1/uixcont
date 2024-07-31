@@ -9,7 +9,7 @@ import uixLogo from "../images/uixLogo.png";
 
 const Navbar = () => {
   return (
-    <div className="flex justify-between items-center px-14 h-14  text-amber-500  bg-black opacity-95 sticky">
+    <div className="flex justify-between items-center px-14 h-14   bg-black opacity-95 sticky">
       <div className="flex gap-8  items-center text-2xl ">
         <div>
           <HiOutlineMenuAlt1 />

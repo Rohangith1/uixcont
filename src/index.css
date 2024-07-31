@@ -5,6 +5,7 @@ body{
   margin: 0;
   background-color: #181818;
   font-family: "Roboto Mono", monospace;
+  color:rgb(233, 181, 10);
 }
 
 @import "tailwindcss/base";
