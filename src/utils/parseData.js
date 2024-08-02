@@ -1,6 +1,8 @@
-import React from "react";
+
 import axios from "axios";
-import {parseVideoDuration } from './parseVideoDuration'
+import { parseVideoDuration } from './parseVideoDuration'
+import { convertRawtoString } from "./convertRawtoString";
+import { timeSince } from "./timeSince"
 
 const API_KEY = process.env.REACT_APP_YOUTUBE_DATA_API_KEY;
 
@@ -22,7 +24,7 @@ const parseData = async (items) => {
     )}&key=${API_KEY}`
           );
       
-      console.log(channelsData)
+      // console.log(channelsData)
 
     const parsedChannelData = [];
     channelsData.forEach((channel) =>
@@ -35,12 +37,12 @@ const parseData = async (items) => {
     const {
       data: { items: videosData },
     } =
-      await axios.get(`https://youtube.googleapis.com/youtube/v3/videos?part=contentDetails&id,statistics&id=${videoIds.join(
+      await axios.get(`https://youtube.googleapis.com/youtube/v3/videos?part=contentDetails,statistics&id=${videoIds.join(
             ","
       )}&key=${API_KEY}`);
       
 
-      console.log(videosData)
+      // console.log(videosData)
     const parseData = [];
     items.forEach((item, index) => {
       const { image: channelImage } = parsedChannelData.find(
@@ -52,7 +54,7 @@ const parseData = async (items) => {
           videoTitle: item.snippet.title,
           videoDescription: item.snippet.description,
           videoThumbnail: item.snippet.thumbnails.medium.url,
-          videoLink: `https://www.youtube.com/watch=?v=${item.id.videoId}`,
+          videoLink: `https://www.youtube.com/watch?v=${item.id.videoId}`,
           videoDuration: parseVideoDuration(
             videosData[index].contentDetails.duration
           ),
