@@ -5,14 +5,13 @@ import { useAppDispatch, useAppSelector } from "../hooks/useApp";
 import { getHomePageVideos } from "../store/reducers/getHomePageVideos";
 import Spinner from "../components/Spinner";
 import InfiniteScroll from "react-infinite-scroll-component";
+import Card from "../components/Card";
 
 const Home = () => {
   const dispatch = useAppDispatch();
   const videos = useAppSelector((state) => state.ucountApp.videos);
   useEffect(() => {
     dispatch(getHomePageVideos(false));
-
-    console.log(videos);
   }, [dispatch]);
 
   return (
@@ -29,13 +28,13 @@ const Home = () => {
             hasMore={videos.length < 500}
             loader={<Spinner />}
             height={650}
-          ><div>
-              {
-                videos.map((item) => {
-                  return <Card data={item} key={item.videoId}/>
-                })
-            }
-            </div></InfiniteScroll>
+          >
+            <div className="grid gap-y-14 gap-x-8 grid-cols-4 p-8">
+              {videos.map((item) => {
+                return <Card data={item} key={item.videoId} />;
+              })}
+            </div>
+          </InfiniteScroll>
         ) : (
           <Spinner />
         )}

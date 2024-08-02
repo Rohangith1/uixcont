@@ -6,8 +6,23 @@ import { FaMicrophone } from "react-icons/fa6";
 import { RiVideoAddLine } from "react-icons/ri";
 import { IoMdNotifications } from "react-icons/io";
 import uixLogo from "../images/uixLogo.png";
+import { useLocation, useNavigate } from "react-router-dom";
+import {useAppDispatch,useAppSelector} from '../hooks/useApp'
 
 const Navbar = () => {
+
+  const location = useLocation()
+  const navigate = useNavigate()
+  const dispatch = useAppDispatch()
+  const searchTerm = useAppSelector((state) => state.ucontApp.searchTerm);
+
+  const handleSearch = () => {
+    if (location.pathname !== '/search') navigate('/search');
+    else {
+      
+    }
+  }
+
   return (
     <div className="flex justify-between items-center px-14 h-14   bg-black opacity-95 sticky">
       <div className="flex gap-8  items-center text-2xl ">

@@ -42,7 +42,7 @@ const parseData = async (items) => {
       )}&key=${API_KEY}`);
       
 
-      // console.log(videosData)
+ console.log(videosData)
     const parseData = [];
     items.forEach((item, index) => {
       const { image: channelImage } = parsedChannelData.find(
