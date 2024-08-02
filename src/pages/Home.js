@@ -10,13 +10,8 @@ const Home = () => {
   const videos = useAppSelector((state) => state.ucountApp.videos);
   useEffect(() => {
     dispatch(getHomePageVideos(false))
-
-    try {
-      console.log(videos);
-    } catch (error) {
-      console.log(error)
-    }
     
+    console.log(videos);
 },[dispatch])
 
   return (
