@@ -4,7 +4,7 @@ import ucontReducer from '../features/ucont/ucontSlice'
 
 const store = configureStore({
     reducer: {
-        ucountApp:ucontReducer
+        ucountApp:ucontReducer,
     }
 });
 

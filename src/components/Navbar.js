@@ -8,18 +8,23 @@ import { IoMdNotifications } from "react-icons/io";
 import uixLogo from "../images/uixLogo.png";
 import { useLocation, useNavigate } from "react-router-dom";
 import {useAppDispatch,useAppSelector} from '../hooks/useApp'
+import { changeSearchTerm, clearVideos } from "../features/ucont/ucontSlice";
+import { getSearchPageVideos } from "../store/reducers/getSearchPageVideos";
 
-const Navbar = () => {
+export default function Navbar (){
 
-  const location = useLocation()
-  const navigate = useNavigate()
-  const dispatch = useAppDispatch()
-  const searchTerm = useAppSelector((state) => state.ucontApp.searchTerm);
+   const location = useLocation();
+   const navigate = useNavigate();
+   const dispatch = useAppDispatch();
+   const searchTerm = useAppSelector((state) => state.ucontApp.searchTerm);
+
+  console.log(searchTerm)
 
   const handleSearch = () => {
-    if (location.pathname !== '/search') navigate('/search');
+    if (location.pathname !== "/search") navigate("/search");
     else {
-      
+      dispatch(clearVideos);
+      dispatch(getSearchPageVideos(false));
     }
   }
 
@@ -36,13 +41,20 @@ const Navbar = () => {
         </div>
       </div>
       <div className="flex items-center justify-center gap-5">
-        <form action="">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSearch();
+          }}
+        >
           <div className="flex bg-zinc-900 items-center h-10 px-4 pr-0 rounded-3xl">
             <div className="flex gap-5 items-center pr-5">
               <input
                 type="text"
                 placeholder="Search"
                 className="w-96 bg-zinc-900 focus:outline-none border-none"
+                value={searchTerm}
+                onChange={(e) => dispatch(changeSearchTerm(e.target.value))}
               />
             </div>
             <button className="h-10 w-16 flex items-center justify-center bg-zinc-800 rounded-r-3xl">
@@ -59,7 +71,7 @@ const Navbar = () => {
         <RiVideoAddLine />
 
         <div className="relative">
-          <IoMdNotifications  />
+          <IoMdNotifications />
           <span className="absolute bottom-2 left-2 text-xs bg-red-600 text-white rounded-full px-1">
             9+
           </span>
@@ -74,4 +86,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+
