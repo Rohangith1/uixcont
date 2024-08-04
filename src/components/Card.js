@@ -1,8 +1,8 @@
 import React from "react";
 
 const Card = ({ data }) => {
-  console.log(data);
-  console.log(data.videoDuration);
+  // console.log(data);
+  // console.log(data.videoDuration);
   return (
     <div className="w-64 h-60 flex gap-3 flex-col">
       <div className="relative">
