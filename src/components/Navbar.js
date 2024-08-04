@@ -18,7 +18,7 @@ export default function Navbar (){
    const dispatch = useAppDispatch();
    const searchTerm = useAppSelector((state) => state.ucontApp.searchTerm);
 
-  console.log(searchTerm)
+  
 
   const handleSearch = () => {
     if (location.pathname !== "/search") navigate("/search");

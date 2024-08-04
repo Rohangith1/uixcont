@@ -9,7 +9,7 @@ import Card from "../components/Card";
 
 const Home = () => {
   const dispatch = useAppDispatch();
-  const videos = useAppSelector((state) => state.ucountApp.videos);
+  const videos = useAppSelector((state) => state.ucontApp.videos);
   useEffect(() => {
     dispatch(getHomePageVideos(false));
   }, [dispatch]);

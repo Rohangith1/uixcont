@@ -29,23 +29,15 @@ const ucontSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getHomePageVideos.fulfilled, (state, action) => {
-      try {
-        if (action.payload && action.payload.parsedData) {
-          state.videos = action.payload.parsedData;
-          state.nextPageToken = action.payload.nextPageToken;
-        }
-      } catch (error) {
-        console.log(error);
+      if (action.payload && action.payload.parsedData) {
+        state.videos = action.payload.parsedData;
+        state.nextPageToken = action.payload.nextPageToken;
       }
     });
     builder.addCase(getSearchPageVideos.fulfilled, (state, action) => {
-      try {
-        if (action.payload && action.payload.parsedData) {
-          state.videos = action.payload.parsedData;
-          state.nextPageToken = action.payload.nextPageToken;
-        }
-      } catch (error) {
-        console.log(error);
+      if (action.payload && action.payload.parsedData) {
+        state.videos = action.payload.parsedData;
+        state.nextPageToken = action.payload.nextPageToken;
       }
     });
   },
